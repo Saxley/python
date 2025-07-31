@@ -75,36 +75,36 @@ def verify_number(count): # verify_number is a function for determinated if the 
 def use(): # use is my function init this function show the option to user and help to user for your simple use
         option = 0 # this variable is for storage to chosen operation select for the user
         values = [] # this list storage the diferents params into the user 
-        count = len(values)
-        count = count + 1
-        value = 0
-        menu = "1.suma\n2.resta\n3.multiplicacion\n4.division"
-        while option > 4 or option < 1:
-                status_warning = False
+        count = len(values) # count variable storage the number of elements in the list values
+        count = count + 1 # add one to count because values to init is 0
+        value = 0 # value variable storage the input of users
+        menu = "1.suma\n2.resta\n3.multiplicacion\n4.division" # menu storage the options to check
+        while option > 4 or option < 1: # this bucle execute if option is major to four and minor to one.
+                status_warning = False # the variable status_warning is alert for show in screen the message warning
                 warning = "Elige una opcion valida del menu."
-                try:
+                try: # try storage in option the input to user and try change the input in type int
                     print(menu)
                     option = int(input("Bienvenido a tu calculadora, seleccione la operacion que desea realizar:\n"))
-                except ValueError:
+                except ValueError: # if try, failed then show the message warning and change the status_warning to True
                         print(f"{warning}")
                         status_warning = True
-                if option > 4 or option < 1 and status_warning != True:
+                if option > 4 or option < 1 and status_warning != True: # if try is success and status_warning is diferent to True show in the screen the message warning and the menu
                             print(f"{warning}\n{menu}")
-        value = verify_number(count)
+        value = verify_number(count) # storage the result of verify_number in value
+        values.append(value) # add a new element to list values
+        count = count + 1 # add one to count
+        value = verify_number(count) #repeat the last pass
         values.append(value)
-        count = count + 1
-        value = verify_number(count)
-        values.append(value)
-        if option < 4 and option > 0:
+        if option < 4 and option > 0: # if option is minor to 4 and major to 0, program ask to user if wish add a new element to the list
                 while input("Desea agregar otro parametro.\ny:SI\nn:NO\n") == "y":
-                        count = count + 1
-                        value = verify_number(count)
-                        values.append(value)
-        print(calc(values, int(option)))
+                        count = count + 1 # if answer is y then add one to count
+                        value = verify_number(count) # storage the return in value
+                        values.append(value) # add a new element to list values
+        print(calc(values, int(option))) # show on the screen the operation.
 
-if __name__ == "__main__":
-        use()
-        while input("¿Desea realizar otra operación?:\ny:SI\nn:NO\n") == "y":
-                use()
-        print("Hasta pronto.")
-        sys.exit()
+if __name__ == "__main__": 
+        use() # recall to the function use
+        while input("¿Desea realizar otra operación?:\ny:SI\nn:NO\n") == "y": # if the input is diferent to y then the bucle end
+                use() # recall to the function use
+        print("Hasta pronto.") # end to program message
+        sys.exit() # use sys for end the program
