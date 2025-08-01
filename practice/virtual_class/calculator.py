@@ -7,13 +7,13 @@ def text_explain(params, operation_sign): # text_explain is a function dedicated
         match operation_sign: # whit match i can use varius options how switch in c++ or js, operation_sign is the chosen operation
                 # asign the sign to operation to sign
                 case 1:
-                    sign = "+"
+                        sign = "+"
                 case 2:
-                    sign="-"
+                        sign="-"
                 case 3:
-                    sign="*"
+                        sign="*"
                 case 4:
-                    sign="/"
+                        sign="/"
         for value in params: # whit this bucle iterate the list params received how param
                 if value.startswith("-"): # if value in params init whit the sign - then wrap the value between parentheses and add to sign respect to chosen operation
                         text += "(" + value + ")" + sign
@@ -43,33 +43,33 @@ def calc(params, operation): # this function select the action to execute and re
         for value in params: # whit this bucle i iterate in the list params 
                 value = int(value) # change value to type int
                 if count == 0: # if count is equal to 0 then res value now is the value of the first param
-                    res = value
+                        res = value
                 else: # if count not is 0 then with match select to chosen operation
-                    match operation:
-                            case 1: # the user chosen add operation then recall to function add and pass params, res that is the first value and value that is the second value
-                                print("SUMANDO...")
-                                res = add(res, value)
-                            case 2: # the user chosen add operation then recall to function rest and pass params, res that is the first value and value that is the second value
-                                print("RESTANDO...")
-                                res = rest(res, value)
-                            case 3: # the user chosen add operation then recall to function multiplication and pass params, res that is the first value and value that is the second value
-                                print("MULTIPLICANDO...")
-                                res = multiplication(res, value)
-                            case 4: # the user chosen add operation then recall to function division and pass params.
-                                print("DIVIDIENDO...")
-                                res = division(params)
+                        match operation:
+                                case 1: # the user chosen add operation then recall to function add and pass params, res that is the first value and value that is the second value
+                                        print("SUMANDO...")
+                                        res = add(res, value)
+                                case 2: # the user chosen add operation then recall to function rest and pass params, res that is the first value and value that is the second value
+                                        print("RESTANDO...")
+                                        res = rest(res, value)
+                                case 3: # the user chosen add operation then recall to function multiplication and pass params, res that is the first value and value that is the second value
+                                        print("MULTIPLICANDO...")
+                                        res = multiplication(res, value)
+                                case 4: # the user chosen add operation then recall to function division and pass params.
+                                        print("DIVIDIENDO...")
+                                        res = division(params)
                 count += 1 # increment count on one
         return  text_explain(params, operation) + str(res) # recall to function text_explain and concatenated the result to calc
 
 def verify_number(count): # verify_number is a function for determinated if the param into is or not one number
         value = input(f"Ingresa el parametro {count}:\n")
         try: # try change the type of variable of string to int
-            int(value)
+                int(value)
         except ValueError: # if is try failed then recall to recursive mode to own function
-            value = False
-            while value == False:
-                print("Porfavor ingresa numeros.")
-                value = verify_number(count)
+                value = False
+                while value == False:
+                        print("Porfavor ingresa numeros.")
+                        value = verify_number(count)
         return value
         
 def use(): # use is my function init this function show the option to user and help to user for your simple use
@@ -83,13 +83,13 @@ def use(): # use is my function init this function show the option to user and h
                 status_warning = False # the variable status_warning is alert for show in screen the message warning
                 warning = "Elige una opcion valida del menu."
                 try: # try storage in option the input to user and try change the input in type int
-                    print(menu)
-                    option = int(input("Bienvenido a tu calculadora, seleccione la operacion que desea realizar:\n"))
+                        print(menu)
+                        option = int(input("Bienvenido a tu calculadora, seleccione la operacion que desea realizar:\n"))
                 except ValueError: # if try, failed then show the message warning and change the status_warning to True
                         print(f"{warning}")
                         status_warning = True
                 if option > 4 or option < 1 and status_warning != True: # if try is success and status_warning is diferent to True show in the screen the message warning and the menu
-                            print(f"{warning}\n{menu}")
+                        print(f"{warning}\n{menu}")
         value = verify_number(count) # storage the result of verify_number in value
         values.append(value) # add a new element to list values
         count = count + 1 # add one to count
